@@ -86,7 +86,25 @@ let game = () => {
   }
 };
 
+let board = () => {
+  const body = document.querySelector('body');
+  const container = document.createElement("div");
+  container.id = 'container';
+
+  const btnRock = document.createElement('button');
+
+  const btnPaper = document.createElement('button');
+
+  const btnScissors = document.createElement('button');
+
+  container.appendChild(btnRock);
+  container.appendChild(btnPaper);
+  container.appendChild(btnScissors);
+
+  body.appendChild(container);
+}
+
 const playerSelection = "rock";
 const computerSelection = computerPlay();
 //console.log(playRound(playerSelection, computerSelection));
-game();
+board();
