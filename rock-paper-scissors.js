@@ -87,48 +87,6 @@ let game = () => {
   }
 };
 
-// Builds the ui
-let board = () => {
-  const body = document.querySelector("body");
-
-  const container = document.createElement("div");
-  container.id = "container";
-
-  const header = document.createElement("h1");
-  header.textContent = "Rock, Paper, Scissors";
-
-  const div = document.createElement("div");
-  div.id = "btn-div";
-
-  const btnRock = document.createElement("button");
-  btnRock.classList.add("btn");
-  btnRock.textContent = "Rock";
-  btnRock.addEventListener("click", () => {
-    playRound("rock", computerPlay());
-  });
-
-  const btnPaper = document.createElement("button");
-  btnPaper.classList.add("btn");
-  btnPaper.textContent = "Paper";
-
-  const btnScissors = document.createElement("button");
-  btnScissors.classList.add("btn");
-  btnScissors.textContent = "Scissors";
-
-  const footer = document.createElement("div");
-  footer.classList.add("footer");
-
-  div.appendChild(btnRock);
-  div.appendChild(btnPaper);
-  div.appendChild(btnScissors);
-
-  container.appendChild(header);
-  container.appendChild(div);
-
-  body.appendChild(container);
-};
-
 const playerSelection = "rock";
 const computerSelection = computerPlay();
-// console.log(playRound(playerSelection, computerSelection));
-// board();
+
