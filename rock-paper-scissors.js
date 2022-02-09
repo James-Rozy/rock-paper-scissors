@@ -1,6 +1,7 @@
 let playerPlay = () => {
-  let playerChoice = prompt("What will you play? Rock, paper, or scissors:");
-  playerChoice.toLowerCase();
+  let playerChoice = "";
+  
+
 
   return playerChoice;
 };
@@ -17,7 +18,7 @@ let computerPlay = () => {
     return "paper";
   } else {
     return "scissors";
-  } 
+  }
 };
 
 let playRound = (playerSelection, computerSelection) => {
@@ -48,21 +49,21 @@ let game = () => {
     compCount = 0;
 
   // Using a for loop to play a game of 5 rounds
-  for (i = 0; i < 5; i++) {
-    player = playerPlay();
-    computer = computerPlay();
-    round = playRound(player, computer);
+  // for (i = 0; i < 5; i++) {
+  //   player = playerPlay();
+  //   computer = computerPlay();
+  //   round = playRound(player, computer);
 
-    if (round === true) {
-      playerCount++;
-      console.log("You won that round, %s beats %s.", player, computer);
-    } else if (round === false) {
-      compCount++;
-      console.log("You lost that round, %s beats %s.", computer, player);
-    } else {
-      console.log("It was a tie...");
-    }
-  }
+  //   if (round === true) {
+  //     playerCount++;
+  //     console.log("You won that round, %s beats %s.", player, computer);
+  //   } else if (round === false) {
+  //     compCount++;
+  //     console.log("You lost that round, %s beats %s.", computer, player);
+  //   } else {
+  //     console.log("It was a tie...");
+  //   }
+  // }
 
   // Check the score to determine who won the game or if it was a tie
   if (playerCount > compCount) {
@@ -86,25 +87,48 @@ let game = () => {
   }
 };
 
+// Builds the ui
 let board = () => {
-  const body = document.querySelector('body');
+  const body = document.querySelector("body");
+
   const container = document.createElement("div");
-  container.id = 'container';
+  container.id = "container";
 
-  const btnRock = document.createElement('button');
+  const header = document.createElement("h1");
+  header.textContent = "Rock, Paper, Scissors";
 
-  const btnPaper = document.createElement('button');
+  const div = document.createElement("div");
+  div.id = "btn-div";
 
-  const btnScissors = document.createElement('button');
+  const btnRock = document.createElement("button");
+  btnRock.classList.add("btn");
+  btnRock.textContent = "Rock";
+  btnRock.addEventListener("click", () => {
+    playRound("rock", computerPlay());
+  });
 
-  container.appendChild(btnRock);
-  container.appendChild(btnPaper);
-  container.appendChild(btnScissors);
+  const btnPaper = document.createElement("button");
+  btnPaper.classList.add("btn");
+  btnPaper.textContent = "Paper";
+
+  const btnScissors = document.createElement("button");
+  btnScissors.classList.add("btn");
+  btnScissors.textContent = "Scissors";
+
+  const footer = document.createElement("div");
+  footer.classList.add("footer");
+
+  div.appendChild(btnRock);
+  div.appendChild(btnPaper);
+  div.appendChild(btnScissors);
+
+  container.appendChild(header);
+  container.appendChild(div);
 
   body.appendChild(container);
-}
+};
 
 const playerSelection = "rock";
 const computerSelection = computerPlay();
-//console.log(playRound(playerSelection, computerSelection));
-board();
+// console.log(playRound(playerSelection, computerSelection));
+// board();
